@@ -104,8 +104,7 @@ if 'baseline_engine' not in st.session_state:
 @st.cache_resource
 def load_pipeline():
 
-    loader = FitbitLoader("data/")
-
+    loader = FitbitLoader("./data/")
     if not loader.load_all():
         return None, None, None
 
