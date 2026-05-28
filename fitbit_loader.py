@@ -1,4 +1,4 @@
-
+```python
 import pandas as pd
 import os
 
@@ -33,24 +33,26 @@ class FitbitLoader:
 
             self.daily = pd.read_csv(
                 daily_path,
-                encoding="latin1"
+                encoding_errors="ignore"
             )
 
             self.sleep = pd.read_csv(
                 sleep_path,
-                encoding="latin1"
+                encoding_errors="ignore"
             )
 
             self.heart_rate = pd.read_csv(
                 hr_path,
-                encoding="latin1"
+                encoding_errors="ignore"
             )
 
             return True
 
         except Exception as e:
 
-            print("ERROR LOADING FILES:", e)
+            import streamlit as st
+
+            st.error(f"REAL ERROR: {e}")
 
             return False
 
@@ -65,3 +67,4 @@ class FitbitLoader:
     def get_heart_rate(self):
 
         return self.heart_rate
+```
