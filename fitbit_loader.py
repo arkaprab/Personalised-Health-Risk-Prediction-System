@@ -43,7 +43,8 @@ class FitbitLoader:
 
             self.heart_rate = pd.read_csv(
                 hr_path,
-                encoding_errors="ignore"
+                encoding_errors="ignore",
+                nrows=50000
             )
 
             return True
