@@ -1,4 +1,4 @@
-```python
+
 import pandas as pd
 import os
 
@@ -67,4 +67,3 @@ class FitbitLoader:
     def get_heart_rate(self):
 
         return self.heart_rate
-```
