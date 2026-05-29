@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
 from datetime import datetime
+import os
 
 st.set_page_config(
     page_title="Health AI",
@@ -104,7 +105,9 @@ if 'baseline_engine' not in st.session_state:
 @st.cache_resource
 def load_pipeline():
 
-    loader = FitbitLoader("data/")
+    data_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
+
+    loader = FitbitLoader(data_path)
     if not loader.load_all():
         return None, None, None
 
@@ -464,19 +467,15 @@ if st.session_state.logged_in:
             # =================================================
 
             if current_risk >= 0.80:
-
                 alert_level = "🔴 CRITICAL"
 
             elif current_risk >= 0.60:
-
                 alert_level = "🟠 HIGH"
 
             elif current_risk >= 0.35:
-
                 alert_level = "🟡 MODERATE"
 
             else:
-
                 alert_level = "🟢 LOW"
 
             # =================================================
